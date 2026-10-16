@@ -1,0 +1,41 @@
+{
+  "name": "mongoose-codemod",
+  "version": "0.1.0",
+  "description": "Scans a codebase for Mongoose upgrade breakage, separates what can be automated from what silently changes behaviour, and transforms only the former.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "bin": { "mongoose-codemod": "./dist/presentation/cli/cli.js" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --experimental-strip-types \"test/**/*.test.ts\"",
+    "dev": "node --experimental-strip-types src/presentation/cli/cli.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mongoose",
+    "codemod",
+    "migration",
+    "upgrade",
+    "ts-morph",
+    "breaking-changes",
+    "cli"
+  ],
+  "dependencies": {
+    "ts-morph": "^28.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.0"
+  }
+}
